@@ -1,77 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* ===== CSS Variables for Light/Dark ===== */
+/* ===== Light/Dark vars ===== */
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --accent: #00a3ff;
   --accent-2: #00e0b8;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
-}
-
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  :root { --background: #0a0a0a; --foreground: #ededed; }
 }
 
-/* ===== Base Styles ===== */
-html,
-body {
-  height: 100%;
-}
-
+/* ===== Base ===== */
+html, body { height: 100%; }
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ===== Reusable UI Components ===== */
-.btn {
-  @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition;
-}
+/* ===== Reusable UI ===== */
+.btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition; }
+.btn-primary { @apply text-white shadow-md; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+.btn-ghost { @apply bg-white border border-black/10 hover:bg-black/5; }
+.input { @apply w-full rounded-full border border-black/10 bg-white px-4 py-2.5 outline-none focus:border-[var(--accent)]; }
+.card { @apply rounded-2xl border border-black/5 bg-white shadow-md; }
+.badge { @apply inline-flex items-center rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs; }
 
-.btn-primary {
-  @apply btn text-white shadow-md;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-}
-
-.btn-ghost {
-  @apply btn bg-white border border-black/10 hover:bg-black/5;
-}
-
-.input {
-  @apply w-full rounded-full border border-black/10 bg-white px-4 py-2.5 outline-none focus:border-[var(--accent)];
-}
-
-.card {
-  @apply rounded-2xl border border-black/5 bg-white shadow-md;
-}
-
-.badge {
-  @apply inline-flex items-center rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs;
-}
-
-/* ===== Scrollbar Styling ===== */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,.2); border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
