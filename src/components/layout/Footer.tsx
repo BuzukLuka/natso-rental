@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { site } from "@/data/site";
@@ -8,14 +7,14 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 border-t border-black/5 bg-[linear-gradient(180deg,#fff,rgba(250,250,249,.8))]">
+    <footer className="mt-16 border-t border-black/5 bg-[linear-gradient(180deg,#ffffff,rgba(245,247,250,.9))]">
       <Container className="grid gap-10 py-12 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-xl bg-gradient-to-br from-brand-sky to-brand-mint" />
+            <div className="h-8 w-8 rounded-xl logo-conic" />
             <span className="text-lg font-semibold">{site.name}</span>
           </div>
-          <p className="mt-3 text-sm text-black/70 max-w-sm">
+          <p className="mt-3 text-sm text-ink max-w-sm">
             {site.tagline}. Search, compare, and book rentals with secure
             payments and modern tools for hosts & tenants.
           </p>
@@ -36,7 +35,7 @@ export function Footer() {
 
         <div>
           <h4 className="mb-3 font-semibold">Explore</h4>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm text-ink">
             <li>
               <Link href={site.links.properties} className="hover:underline">
                 All Rentals
@@ -62,7 +61,7 @@ export function Footer() {
 
         <div>
           <h4 className="mb-3 font-semibold">For Hosts</h4>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm text-ink">
             <li>
               <Link href={site.links.host} className="hover:underline">
                 Become a Host
@@ -88,7 +87,7 @@ export function Footer() {
 
         <div>
           <h4 className="mb-3 font-semibold">Newsletter</h4>
-          <p className="text-sm text-black/70">
+          <p className="text-sm text-ink">
             Market tips and rental deals in your inbox.
           </p>
           <form
@@ -103,13 +102,13 @@ export function Footer() {
               type="email"
               placeholder="you@example.com"
             />
-            <button className="btn-primary w-full">Subscribe</button>
+            <button className="btn btn-accent w-full">Subscribe</button>
           </form>
         </div>
       </Container>
 
       <div className="border-t border-black/5">
-        <Container className="flex flex-col md:flex-row items-center justify-between py-5 text-sm text-black/60">
+        <Container className="flex flex-col md:flex-row items-center justify-between py-5 text-sm text-ink">
           <p>
             © {year} {site.name}. All rights reserved.
           </p>

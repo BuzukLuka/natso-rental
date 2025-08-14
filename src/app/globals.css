@@ -1,34 +1,115 @@
 @import "tailwindcss";
 
-/* ===== Light/Dark vars ===== */
+/* ===== Brand palette (you asked to use these exactly) ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --accent: #00a3ff;
-  --accent-2: #00e0b8;
+  --bg: #ffffff; /* page background */
+  --fg: #0f172a; /* deep slate for headings */
+  --ink: #7b7b7b; /* secondary text */
+  --primary: #4a90e2; /* brand blue */
+  --mint: #50e3c2; /* mint/teal */
+  --accent: #f5a623; /* CTA orange */
+  --white: #ffffff;
 }
+
 @media (prefers-color-scheme: dark) {
-  :root { --background: #0a0a0a; --foreground: #ededed; }
+  :root {
+    --bg: #0a0a0a;
+    --fg: #ededed;
+    --ink: #c9c9c9;
+  }
 }
 
 /* ===== Base ===== */
-html, body { height: 100%; }
+html,
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  height: 100%;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* ===== Reusable UI ===== */
-.btn { @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition; }
-.btn-primary { @apply text-white shadow-md; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
-.btn-ghost { @apply bg-white border border-black/10 hover:bg-black/5; }
-.input { @apply w-full rounded-full border border-black/10 bg-white px-4 py-2.5 outline-none focus:border-[var(--accent)]; }
-.card { @apply rounded-2xl border border-black/5 bg-white shadow-md; }
-.badge { @apply inline-flex items-center rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs; }
+/* A soft, reusable shadow */
+.shadow-soft {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,.2); border-radius: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
+/* ===== Reusable UI ===== */
+.btn {
+  @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition;
+}
+.btn-primary {
+  @apply text-white shadow-md;
+  background: linear-gradient(135deg, var(--primary), var(--mint));
+}
+.btn-accent {
+  @apply text-white shadow-md;
+  background: linear-gradient(135deg, var(--accent), #ffb84a);
+}
+.btn-ghost {
+  @apply bg-white border border-black/10 hover:bg-black/5;
+}
+.input {
+  @apply w-full rounded-full border border-black/10 bg-white px-4 py-2.5 outline-none;
+}
+.input:focus {
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--primary) 20%, transparent);
+  border-color: var(--primary);
+}
+
+.card {
+  @apply rounded-2xl border border-black/5 bg-white shadow-md;
+}
+.badge {
+  @apply inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs;
+  color: var(--ink);
+}
+
+/* Links */
+a {
+  color: var(--primary);
+}
+a:hover {
+  color: color-mix(in oklab, var(--primary) 85%, black);
+}
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Utility helpers */
+.text-ink {
+  color: var(--ink);
+}
+.bg-brand-gradient {
+  background: radial-gradient(
+      60rem 60rem at 10% -10%,
+      color-mix(in oklab, var(--primary) 12%, transparent),
+      transparent
+    ),
+    radial-gradient(
+      60rem 60rem at 90% 0%,
+      color-mix(in oklab, var(--mint) 12%, transparent),
+      transparent
+    );
+}
+.logo-gradient {
+  background: conic-gradient(
+    from 30deg,
+    var(--primary) 0 25%,
+    var(--mint) 25% 50%,
+    var(--accent) 50% 75%,
+    #ffffff 75% 100%
+  );
+}
