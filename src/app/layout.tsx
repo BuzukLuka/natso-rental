@@ -1,8 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { site } from "@/data/site";
-import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { FavoritesProvider } from "@/context/FavoritesProvider";
 
 export const metadata: Metadata = {
   title: `${site.name} — ${site.tagline}`,
@@ -20,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-dvh flex flex-col bg-white text-slate-900 antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <FavoritesProvider>
+          <main className="flex-1">{children}</main>
+        </FavoritesProvider>
         <Footer />
       </body>
     </html>

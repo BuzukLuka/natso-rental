@@ -1,13 +1,18 @@
 export const site = {
   name: "Natso Rental",
-  tagline: "Smart room & house rentals for Canada",
+  tagline: "Find your next room in minutes",
+  brand: {
+    primary: "#4A90E2",
+    mint: "#50E3C2",
+    accent: "#F5A623",
+  },
   links: {
+    properties: "/properties",
+    host: "/host",
+    pricing: "/host#pricing",
+    dashboard: "/dashboard",
     about: "/about",
     contact: "/contact",
-    host: "/host",
-    properties: "/properties",
-    pricing: "/pricing",
-    dashboard: "/dashboard",
-    auth: { signIn: "/auth/login", signUp: "/auth/register" },
+    auth: { signIn: "/auth/sign-in", signUp: "/auth/sign-up" },
   },
 };
